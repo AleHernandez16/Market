@@ -1,0 +1,81 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ==========================================
+// INVENTARIO Y CATÁLOGO
+// ==========================================
+model Product {
+  id           Int         @id @default(autoincrement())
+  name         String
+  category     String
+  price        Float
+  stockCagua   Int         @default(0)
+  stockMaracay Int         @default(0)
+  stockTurmero Int         @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  // Relación: Un producto puede estar en muchos pedidos
+  orderItems   OrderItem[]
+}
+
+// ==========================================
+// PEDIDOS (ACTIVOS Y ARCHIVADOS)
+// ==========================================
+model Order {
+  id            String      @id @default(uuid()) // Usamos UUID por seguridad en lugar de números secuenciales
+  customer      String
+  phone         String
+  address       String
+  sede          String      // "Cagua", "Maracay", "Turmero"
+  
+  total         Float
+  paymentMethod String
+  paymentRef    String?     // Opcional, por si es efectivo y no hay referencia
+  
+  status        String      @default("Pendiente") // "Pendiente", "En Preparación", "Entregado"
+  
+  deliveredAt   DateTime?   // Se llena solo cuando pasa a "Entregado"
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relación: Un pedido tiene muchos "ítems" (productos comprados)
+  items         OrderItem[]
+}
+
+// ==========================================
+// DETALLE DE CADA PEDIDO (CARRITO)
+// ==========================================
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  price     Float   // IMPORTANTE: Guarda el precio exacto al momento de la compra
+  
+  // Relación con el Pedido (Si se borra el pedido, se borran sus ítems en cascada)
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  // Relación con el Producto
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+// ==========================================
+// MÉTODOS DE PAGO
+// ==========================================
+model PaymentMethod {
+  id        Int      @id @default(autoincrement())
+  type      String   // Ej: "Pago Móvil", "Zelle"
+  details   String   // Detalles de la cuenta
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
