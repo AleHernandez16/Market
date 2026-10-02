@@ -1,9 +1,89 @@
-# Market
-Example of a Market Web Page
+# Market — OrtiFresca
 
-this project were create in june, 2026. their goal it's practice my skills. 
+A personal e-commerce practice project built to develop and improve my frontend development skills with React and JavaScript.
 
-The functionality is straightforward: users visit the site and place their desired order; items are added to the shopping cart, which calculates the total amount due in both Bolívares and Dollars, including applicable VAT. There is an administrative section for managing stock across various branches—allowing for the tracking of available quantities and branch-specific pricing—as well as a history function that stores purchase invoices for 180 days. 
-An order section allows users to view order status (processing, delivered, or pending); once an order is marked as delivered, the invoice is automatically moved to the aforementioned history log. Areas for future improvement include separating the administrative panel from the user panel, implementing actual pricing and product images, adding a feature to route orders to the branch nearest the user, and creating a registration panel to store relevant user information.
+## Overview
 
-La funcionalidad es simple, ingrasar en la pagina y realizar el pedido deseado, todo se ira cargando y sumando en el carrito de compra y al final te dara el monto total a pagar tanto en Bolivares como en Dolares con su respectivo IVA de ser agregado. tiene un apartado administrativo en el cual se puede gestionar todo lo relacionado con el stock de las distintas sucursales determinando asi la cantidad disponible y los precios independientes, tambien tiene implementado una funcion de historial donde se ira guardando cada factura de compra durante un periodo de 180 dias, al igual que cuenta con una seccion de pedidos desde donde se puede ver el estado de la orden, si esta en proceso, entregado o pendiente, al marcar como etregado la factura es enviada directamente al historial antes mencionado. aun hay cosas por mejorar como por ejemplo terminar de separar el panel administrativo del panel de uruasios, implementar precios reales, implementar imagenes reales de cada producto, una funcion que permita enviar la orden a la sede mas cercana a la ubicacion del usuario y un panel de registro para guardar informacion relevante del usuario.
+Market is a supermarket storefront concept where users can browse product categories, search for products, manage a shopping cart, and review order totals in Venezuelan bolívares and US dollars.
+
+The project also includes an administrative dashboard concept for managing product inventory, orders, and payment-method information.
+
+**Project status:** Personal learning project under development. Not a production-ready e-commerce platform.
+
+## Features
+
+* Product catalog with category filtering and search.
+* Shopping cart with quantity controls.
+* Checkout form and order summary.
+* Currency conversion using a configurable example exchange rate.
+* Administrative interface for inventory and order-state management.
+* Responsive interface built with React and Tailwind CSS.
+
+## Technology Stack
+
+* React
+* JavaScript
+* Vite
+* React Router
+* Tailwind CSS
+* Prisma schema drafted for PostgreSQL data modeling (database integration not yet verified)
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js and npm.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/AleHernandez16/Market.git
+   ```
+
+2. Enter the project directory:
+
+   ```bash
+   cd Market
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm ci
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the local URL shown in the terminal.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+## Current Limitations
+
+* Backend and database integration need to be completed and verified.
+* Order and inventory persistence across sessions has not been verified.
+* Example contact, payment, and exchange-rate values must be replaced with safe demo configuration.
+* Authentication, authorization, and production security have not been verified.
+* Product imagery, real product pricing, and additional user features remain under development.
+
+## What I Learned
+
+This project has helped me practice React component composition, client-side routing, state management, product filtering, cart interactions, and designing an administrative interface.
+
+## Author
+
+Alejandro Hernandez
+
+GitHub: https://github.com/AleHernandez16
+
+This is an independent learning project and is not affiliated with a real supermarket or payment provider.
