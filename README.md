@@ -87,3 +87,22 @@ Alejandro Hernandez
 GitHub: https://github.com/AleHernandez16
 
 This is an independent learning project and is not affiliated with a real supermarket or payment provider.
+
+
+## Screenshots
+
+### Home
+
+![OrtiFresca home](screenshots/home.png)
+
+### Product Catalog
+
+![Product catalog](screenshots/catalog.png)
+
+### Shopping Cart
+
+![Shopping cart](screenshots/cart.png)
+
+### Admin Dashboard
+
+![Admin dashboard](screenshots/admin.png)
